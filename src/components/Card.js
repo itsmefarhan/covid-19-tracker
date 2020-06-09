@@ -1,21 +1,23 @@
 import React from "react";
 import CountUp from "react-countup";
+import Spinner from "./Spinner";
 
 const Card = ({ data }) => {
-  const { confirmed, critical, deaths, recovered, lastUpdate } = data;
-  let dataMapper = [confirmed, recovered, critical, deaths];
+  if (!data) return <Spinner />;
+
+  const { confirmed, recovered, deaths, lastUpdate } = data;
+
+  let dataMapper = [confirmed, recovered, deaths];
 
   // function to return Title based on iteration
   const dataMapperFunc = (cat) => {
     switch (cat) {
       case confirmed:
         return "Confirmed";
-      case critical:
-        return "Active";
-      case deaths:
-        return "Deaths";
       case recovered:
         return "Recovered";
+      case deaths:
+        return "Deaths";
       default:
         break;
     }
@@ -26,21 +28,20 @@ const Card = ({ data }) => {
     switch (cat) {
       case confirmed:
         return "blue";
-      case critical:
-        return "orange";
-      case deaths:
-        return "red";
       case recovered:
         return "green";
+      case deaths:
+        return "red";
       default:
         break;
     }
   };
+
   return (
     <div className="data">
-      {dataMapper.map((cat) => (
+      {dataMapper.map((cat, i) => (
         <div
-          key={cat}
+          key={i}
           className="card"
           style={{
             marginTop: "10px",
@@ -59,7 +60,7 @@ const Card = ({ data }) => {
               ></div>
             </div>
             <h6 className="card-subtitle mb-2 text-muted">
-              <CountUp start={0} end={cat} duration={2} separator="," />
+              <CountUp start={0} end={cat.value} duration={2} separator="," />
             </h6>
             <p className="card-text">{new Date(lastUpdate).toDateString()}</p>
           </div>
