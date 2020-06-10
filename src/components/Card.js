@@ -38,7 +38,7 @@ const Card = ({ data }) => {
   };
 
   return (
-    <div className="data">
+    <div className="data mb-5">
       {dataMapper.map((cat, i) => (
         <div
           key={i}
@@ -49,16 +49,8 @@ const Card = ({ data }) => {
           }}
         >
           <div className="card-body">
-            <div className="box">
-              <h5 className="card-title">{dataMapperFunc(cat)}</h5>
-              <div
-                style={{
-                  background: dynamicColor(cat),
-                  width: "30px",
-                  height: "15px",
-                }}
-              ></div>
-            </div>
+            <h5 className="card-title">{dataMapperFunc(cat)}</h5>
+
             <h6 className="card-subtitle mb-2 text-muted">
               <CountUp start={0} end={cat.value} duration={2} separator="," />
             </h6>

@@ -24,7 +24,7 @@ function App() {
     <div className="container">
       <h1 className="text-muted text-center mt-5 mb-5">Covid-19 Stats</h1>
       <Card data={data} />
-      <Chart data={data} />
+      <Chart />
     </div>
   );
 }

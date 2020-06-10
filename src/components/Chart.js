@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Line, Bar } from "react-chartjs-2";
-import Spinner from "./Spinner";
+import { Line } from "react-chartjs-2";
 
-const Chart = ({ data }) => {
+const Chart = () => {
   const [daily, setDaily] = useState(null);
 
   // Get daily records
@@ -12,7 +11,7 @@ const Chart = ({ data }) => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setDaily(result);
       })
       .catch((err) => {
@@ -20,34 +19,7 @@ const Chart = ({ data }) => {
       });
   }, []);
 
-  if (!data) return null;
-
-  const { confirmed, recovered, deaths } = data;
-
-  //   console.log(data);
-
-  const barChart = (
-    <Bar
-      data={{
-        labels: ["Confirmed", "Recovered", "Deaths"],
-        datasets: [
-          {
-            label: "People",
-            backgroundColor: [
-              "rgba(0, 0, 255, 0.5)",
-              "rgba(0, 255, 0, 0.5)",
-              "rgba(255, 0, 0, 0.5)",
-            ],
-            data: [confirmed.value, recovered.value, deaths.value],
-          },
-        ],
-      }}
-      options={{
-        legend: { display: false },
-        title: { display: true, text: `Current state in ${"country"}` },
-      }}
-    />
-  );
+  if (!daily) return null;
 
   const lineChart = (
     <Line
@@ -56,7 +28,7 @@ const Chart = ({ data }) => {
         datasets: [
           {
             data: daily.map((el) => el.confirmed.total),
-            label: "Infected",
+            label: "Active",
             borderColor: "#3333ff",
             fill: true,
           },
