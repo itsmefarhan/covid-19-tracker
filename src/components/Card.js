@@ -23,6 +23,20 @@ const Card = ({ data }) => {
     }
   };
 
+  // function to return border color based on iteration
+  const colorMapperFunc = (cat) => {
+    switch (cat) {
+      case confirmed:
+        return "#5972f0";
+      case recovered:
+        return "#59f06d";
+      case deaths:
+        return "#e0382f";
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="data mb-5">
       {dataMapper.map((cat, i) => (
@@ -32,6 +46,7 @@ const Card = ({ data }) => {
           style={{
             marginTop: "10px",
             width: "200px",
+            borderRight: `10px solid ${colorMapperFunc(cat)}`
           }}
         >
           <div className="card-body">
