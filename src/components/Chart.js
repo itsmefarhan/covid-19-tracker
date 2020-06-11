@@ -29,15 +29,12 @@ const Chart = () => {
           {
             data: daily.map((el) => el.confirmed.total),
             label: "Active",
-            borderColor: "#3333ff",
-            fill: true,
+            borderColor: "blue",            
           },
           {
             data: daily.map((el) => el.deaths.total),
             label: "Deaths",
-            borderColor: "red",
-            backgroundColor: "rgba(255, 0, 0, 0.5)",
-            fill: true,
+            borderColor: "red",                        
           },
         ],
       }}

@@ -23,20 +23,6 @@ const Card = ({ data }) => {
     }
   };
 
-  // function to return color based on iteration
-  const dynamicColor = (cat) => {
-    switch (cat) {
-      case confirmed:
-        return "blue";
-      case recovered:
-        return "green";
-      case deaths:
-        return "red";
-      default:
-        break;
-    }
-  };
-
   return (
     <div className="data mb-5">
       {dataMapper.map((cat, i) => (
