@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="text-muted text-center mt-5 mb-5">Covid-19 Stats</h1>
+      <h1 className="text-muted text-center mt-5 mb-5">COVID-19 STATS</h1>
       <Card data={data} />
       <CountryPicker handleChange={handleChange} />
       <Chart country={country} data={data} />
